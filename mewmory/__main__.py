@@ -1,6 +1,7 @@
 import argparse
 import json
 from .memory import Memory
+from .instinct import simulate
 
 
 def main():
@@ -22,6 +23,8 @@ def main():
     trace.add_argument("ids", type=int, nargs="+")
     demo = commands.add_parser("demo")
     demo.add_argument("--file", default="examples/kitten.json")
+    simulation = commands.add_parser("simulate", help="Run a fictional needs-driven experiment")
+    simulation.add_argument("--name", default="Kitten-01")
     args = parser.parse_args()
     try:
         with Memory(args.db) as memory:
@@ -36,6 +39,8 @@ def main():
                     for event in events:
                         validation.add(**event)
                 result = {"ids": [memory.add(**event) for event in events]}
+            elif args.command == "simulate":
+                result = simulate(memory, args.name)
             elif args.command == "events":
                 result = memory.events()
             elif args.command == "rules":

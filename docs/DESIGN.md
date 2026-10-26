@@ -5,6 +5,10 @@
 Caller-authored structured event → SQLite append → on-demand aggregation →
 keyword-ranked bounded JSON → original event lookup.
 
+The optional [instinct controller](INSTINCT.md) also generates explicitly
+synthetic events from needs, sensed cues and environment feedback. Its fixed
+policy operates independently of retrieved memory; policy learning is future work.
+
 The event table holds an integer ID, UTC timestamp, actor, place, cue, outcome,
 and raw text. IDs are local to one database. No external model or service is
 required. Parameterized SQL keeps event text separate from executable queries.

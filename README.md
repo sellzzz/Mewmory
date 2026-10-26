@@ -37,6 +37,33 @@ python -m mewmory --db data/kitten.db add --actor Mira --place kitchen --cue "ca
 `add` accepts an optional timezone-aware ISO 8601 `--occurred-at`; otherwise it
 records the current UTC time. SQLite retains the full event text.
 
+## Instinct experiment / 本能实验
+
+Run five fully invented steps with a small needs-driven controller:
+
+```sh
+python -m mewmory --db :memory: simulate
+python -m mewmory --db data/instinct.db simulate --name Kitten-01
+python -m mewmory --db data/instinct.db rules
+python -m mewmory --db data/instinct.db recall caregiver_scent --limit 1
+python -m mewmory --db data/instinct.db trace 3 4
+```
+
+Use a fresh database for the example IDs above. Each invocation starts a new
+synthetic kitten state and appends five events; it does not resume its body state.
+`:memory:` discards events on exit. The built-in scenario produces:
+`call → nuzzle → orient_to_food → orient_to_food → rest`.
+
+需求强度（饥饿、寒冷、疲劳）乘以预设权重决定当前优先需求，再结合感官线索
+选择有限动作。只有环境明确提供的反馈能改变状态；“闻到食物”本身不会消除饥饿。
+每步保存状态、动作和反馈，反复出现的“照顾者气味伴随饥饿降低”可形成统计关联。
+这些关联目前可召回，但尚未参与行为策略，也没有实现强化学习。
+
+This is a deliberately hand-designed controller, not a validated neonatal cat
+model. Its numbers are unitless assumptions, not physiological measurements or
+care instructions. The public scenario is fictional. See [algorithm and research
+boundaries](docs/INSTINCT.md).
+
 ## What the baseline means / 基线含义
 
 - Rules group exact, explicitly supplied `(actor, place, cue)` labels and count
