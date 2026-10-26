@@ -1,0 +1,8 @@
+[
+  {"occurred_at":"2026-01-01T08:00:00+00:00","actor":"Mira","place":"kitchen","cue":"can opening","outcome":"food","text":"Fictional cat Pip hears Mira open a can and receives food in the kitchen."},
+  {"occurred_at":"2026-01-02T08:00:00+00:00","actor":"Mira","place":"kitchen","cue":"can opening","outcome":"food","text":"Pip hears the same can sound; fictional owner Mira provides breakfast."},
+  {"occurred_at":"2026-01-03T08:00:00+00:00","actor":"Mira","place":"kitchen","cue":"can opening","outcome":"no food","text":"Mira opens a can for herself; Pip receives no food."},
+  {"occurred_at":"2026-01-01T14:00:00+00:00","actor":"robot","place":"hall","cue":"vacuum noise","outcome":"retreat","text":"Pip hears the fictional vacuum and retreats to a quiet room."},
+  {"occurred_at":"2026-01-02T14:00:00+00:00","actor":"robot","place":"hall","cue":"vacuum noise","outcome":"retreat","text":"The vacuum starts again and Pip leaves the hall."},
+  {"occurred_at":"2026-01-03T12:00:00+00:00","actor":"Pip","place":"window","cue":"sunlight","outcome":"rest","text":"Pip rests in fictional sunlight beside the window."}
+]
